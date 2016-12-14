@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <LinearLayout
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textAlignment="center"
+            android:id="@+id/deliver_time"
+            android:text="15:46:39"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="6pt"
+            android:textAlignment="center"
+            android:id="@+id/deliver_date"
+            android:text="2016-12-08"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/deliver_content"
+        android:text="广州市广州大学城派件员李聪阿萨德阿萨德阿萨德阿萨德"
+        android:layout_weight="7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

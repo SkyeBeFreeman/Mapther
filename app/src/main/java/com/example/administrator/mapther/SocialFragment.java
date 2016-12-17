@@ -254,7 +254,7 @@ public class SocialFragment extends Fragment {
                             SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
                             sweetAlertDialog.setTitleText("是否删除？");
                             sweetAlertDialog.setContentText("一旦删除不可恢复！");
-                            sweetAlertDialog.setConfirmText("确认删除");
+                            sweetAlertDialog.setConfirmText("确认");
                             sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
@@ -265,9 +265,11 @@ public class SocialFragment extends Fragment {
                                             .setContentText("您点击的帖子已成功删除！")
                                             .setConfirmText("确定")
                                             .setConfirmClickListener(null)
+                                            .showCancelButton(false)
                                             .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                                 }
                             });
+                            sweetAlertDialog.setCancelText("取消");
                             sweetAlertDialog.show();
                         } else {
                             Toast.makeText(getActivity(), "只有本人或是管理员账户才能够删除帖子", Toast.LENGTH_SHORT).show();

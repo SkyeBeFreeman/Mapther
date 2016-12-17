@@ -9,9 +9,9 @@
         android:id="@+id/show_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skye"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
+        android:text="Skye"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -19,8 +19,8 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:background="#1f000000" />
 
     <TextView
@@ -28,19 +28,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left|top"
-        android:lines="17"
-        android:paddingBottom="10dp"
+        android:lines="15"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:paddingTop="10dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        android:text="asdasdADAS"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:background="#1f000000" />
 
     <LinearLayout
@@ -54,14 +54,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="联系方式：" />
+            android:text="联系方式："
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/show_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lines="1" />
+            android:lines="1"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

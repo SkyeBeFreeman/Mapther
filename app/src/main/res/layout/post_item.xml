@@ -12,8 +12,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="skye"
-        android:textStyle="bold"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/post_short_content"
@@ -22,35 +22,36 @@
         android:ellipsize="end"
         android:lines="3"
         android:maxLines="3"
+        android:paddingBottom="5dp"
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
         android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:text="我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅" />
+        android:text="我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅我太帅"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp">
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="联系方式："
-            android:textStyle="bold"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/post_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1234567890"
-            android:textStyle="bold"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>

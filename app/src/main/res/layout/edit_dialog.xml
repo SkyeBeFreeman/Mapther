@@ -17,29 +17,30 @@
         android:id="@+id/edit_line1"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:background="#1f000000" />
 
     <EditText
         android:id="@+id/edit_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left|top"
-        android:lines="17"
         android:background="@drawable/edittext_selector"
+        android:gravity="left|top"
+        android:lines="15"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/edit_line2"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:background="#1f000000" />
 
     <LinearLayout
@@ -51,8 +52,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="联系方式：" />
+            android:text="联系方式："
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edit_phone"
@@ -60,7 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="手机号/微信号/QQ号/邮箱"
-            android:lines="1" />
+            android:lines="1"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

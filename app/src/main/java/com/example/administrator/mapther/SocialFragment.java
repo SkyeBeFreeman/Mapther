@@ -60,6 +60,8 @@ public class SocialFragment extends Fragment {
     private View sub_view;
     private EditText add_content;
     private EditText add_phone;
+    private EditText edit_content;
+    private EditText edit_phone;
 
     private String my_name = null;
     private Thread thread;
@@ -164,7 +166,7 @@ public class SocialFragment extends Fragment {
             }
         });
 
-        // 帖子列表短按
+        // 帖子列表短按显示详情
         post_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -183,31 +185,75 @@ public class SocialFragment extends Fragment {
             }
         });
 
-        // 帖子列表长按
+        // 帖子列表长按修改
         post_listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 temp = postList.get(position);
-                if (TextUtils.equals(temp.getUser_name(), my_name)
-                        || TextUtils.equals(my_name, MainActivity.getSuper_admin())) {
+                if (TextUtils.equals(temp.getUser_name(), my_name)) {
+
+                    LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+                    sub_view = layoutInflater.inflate(R.layout.edit_dialog, null);
+                    ((TextView) sub_view.findViewById(R.id.edit_name)).setText(temp.getUser_name());
+                    edit_content = (EditText) sub_view.findViewById(R.id.edit_content);
+                    edit_content.setText(temp.getContent());
+                    edit_content.setMovementMethod(ScrollingMovementMethod.getInstance());
+                    edit_content.setSelection(temp.getContent().length());
+                    edit_phone = (EditText) sub_view.findViewById(R.id.edit_phone);
+                    edit_phone.setText(temp.getPhone());
+                    edit_phone.setSelection(temp.getPhone().length());
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setTitle("是否删除？");
-                    builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+                    builder.setTitle("修改帖子");
+                    builder.setView(sub_view);
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            postsDB.deleteById(temp.getPost_id());
+                            String content = edit_content.getText().toString();
+                            String phone = edit_phone.getText().toString();
+                            postsDB.updateById(temp.getPost_id(), content, phone);
                             notifyPostList();
                         }
                     });
                     builder.setNegativeButton("否", null);
                     builder.create().show();
                 } else {
-                    Toast.makeText(getActivity(), "只有本人或是管理员账户才能够删帖。", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "只有本人才能够修改帖子", Toast.LENGTH_SHORT).show();
                 }
 
                 return true;
             }
         });
+
+        // 帖子列表左滑删除
+        post_listview.setOnTouchListener(new SwipeDismissListViewTouchListener(
+                post_listview,
+                new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                    @Override
+                    public boolean canDismiss(int position) {
+                        return true;
+                    }
+
+                    @Override
+                    public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                        temp = postList.get(reverseSortedPositions[0]);
+                        if (TextUtils.equals(temp.getUser_name(), my_name)
+                                || TextUtils.equals(my_name, MainActivity.getSuper_admin())) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setTitle("是否删除？");
+                            builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    postsDB.deleteById(temp.getPost_id());
+                                    notifyPostList();
+                                }
+                            });
+                            builder.setNegativeButton("否", null);
+                            builder.create().show();
+                        } else {
+                            Toast.makeText(getActivity(), "只有本人或是管理员账户才能够删除帖子", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }));
 
         return view;
     }

@@ -47,10 +47,11 @@ public class PostsDB extends SQLiteOpenHelper {
         count++;
     }
 
-    public void updateById(int _id, String content) {
+    public void updateById(int _id, String content, String phone) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("content", content);
+        contentValues.put("phone", phone);
         db.update(TABLE_NAME, contentValues, "_id=?", new String[]{_id+""});
         db.close();
     }

@@ -15,8 +15,8 @@ import com.example.administrator.mapther.R;
 
 /**
  * Titanic
- * romainpiel
- * 13/03/2014
+ * zhtian
+ * 18/12/2016
  */
 public class TitanicTextView extends TextView {
 

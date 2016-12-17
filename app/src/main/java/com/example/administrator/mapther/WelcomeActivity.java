@@ -24,10 +24,8 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         TitanicTextView tv = (TitanicTextView) findViewById(R.id.titanic_tv);
-
         // set fancy typeface
         tv.setTypeface(Typefaces.get(this, "Satisfy-Regular.ttf"));
-
         // start animation
         new Titanic().start(tv);
 
@@ -53,7 +51,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(WelcomeActivity.this,
-                                    "App will finish in 3 seconds", Toast.LENGTH_SHORT).show();
+                                    "App will finish in 5 seconds", Toast.LENGTH_SHORT).show();
                             mHandler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {

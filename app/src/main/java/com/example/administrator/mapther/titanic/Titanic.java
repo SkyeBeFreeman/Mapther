@@ -28,7 +28,7 @@ public class Titanic {
 
                 textView.setSinking(true);
 
-                // horizontal animation. 200 = wave.png width
+                // 设置水平方向动画
                 ObjectAnimator maskXAnimator = ObjectAnimator.ofFloat(textView, "maskX", 0, 200);
                 maskXAnimator.setRepeatCount(ValueAnimator.INFINITE);
                 maskXAnimator.setDuration(1000);
@@ -36,16 +36,14 @@ public class Titanic {
 
                 int h = textView.getHeight();
 
-                // vertical animation
-                // maskY = 0 -> wave vertically centered
-                // repeat mode REVERSE to go back and forth
+                // 设置竖直方向动画
                 ObjectAnimator maskYAnimator = ObjectAnimator.ofFloat(textView, "maskY", h/2, - h/2);
                 maskYAnimator.setRepeatCount(ValueAnimator.INFINITE);
                 maskYAnimator.setRepeatMode(ValueAnimator.REVERSE);
                 maskYAnimator.setDuration(5000);
                 maskYAnimator.setStartDelay(0);
 
-                // now play both animations together
+                // 播放动画
                 animatorSet = new AnimatorSet();
                 animatorSet.playTogether(maskXAnimator, maskYAnimator);
                 animatorSet.setInterpolator(new LinearInterpolator());

@@ -216,7 +216,7 @@ public class SocialFragment extends Fragment {
                             notifyPostList();
                         }
                     });
-                    builder.setNegativeButton("否", null);
+                    builder.setNegativeButton("取消", null);
                     builder.create().show();
                 } else {
                     Toast.makeText(getActivity(), "只有本人才能够修改帖子", Toast.LENGTH_SHORT).show();

@@ -10,7 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Skye"
-        android:textSize="20sp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <ImageView
@@ -26,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left|top"
-        android:lines="18"
+        android:lines="17"
         android:paddingBottom="10dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -45,7 +47,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
 
         <TextView
             android:layout_width="wrap_content"

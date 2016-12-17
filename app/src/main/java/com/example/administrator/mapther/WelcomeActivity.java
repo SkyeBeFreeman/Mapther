@@ -24,9 +24,9 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         TitanicTextView tv = (TitanicTextView) findViewById(R.id.titanic_tv);
-        // set fancy typeface
+        // 设置字体
         tv.setTypeface(Typefaces.get(this, "Satisfy-Regular.ttf"));
-        // start animation
+        // 启动动画
         new Titanic().start(tv);
 
         RxPermissions rxPermissions = new RxPermissions(this);

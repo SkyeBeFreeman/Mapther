@@ -30,6 +30,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.administrator.mapther.MainActivity.getMy_name;
 
 
@@ -46,8 +48,8 @@ public class SocialFragment extends Fragment {
     private String string;
     private FloatingActionButton floatingActionButton;
     private ViewPager viewPager;
-    private String[] imageDescription = { "珠江花城", "《名叫海贼的男人》",
-            "最新耳机", "好喝的果汁", "猩猩都爱穿的皮鞋" };
+    private String[] imageDescription = {"珠江花城", "《名叫海贼的男人》",
+            "最新耳机", "好喝的果汁", "猩猩都爱穿的皮鞋"};
     private int[] imageView_id = {R.mipmap.adv1, R.mipmap.adv2, R.mipmap.adv3, R.mipmap.adv4, R.mipmap.adv5};
     // 圆圈标志位
     private int pointIndex = 0;
@@ -238,17 +240,35 @@ public class SocialFragment extends Fragment {
                         temp = postList.get(reverseSortedPositions[0]);
                         if (TextUtils.equals(temp.getUser_name(), my_name)
                                 || TextUtils.equals(my_name, MainActivity.getSuper_admin())) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setTitle("是否删除？");
-                            builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+//                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                            builder.setTitle("是否删除？");
+//                            builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    postsDB.deleteById(temp.getPost_id());
+//                                    notifyPostList();
+//                                }
+//                            });
+//                            builder.setNegativeButton("否", null);
+//                            builder.create().show();
+                            SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                            sweetAlertDialog.setTitleText("是否删除？");
+                            sweetAlertDialog.setContentText("一旦删除不可恢复！");
+                            sweetAlertDialog.setConfirmText("确认删除");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                                public void onClick(SweetAlertDialog sDialog) {
                                     postsDB.deleteById(temp.getPost_id());
                                     notifyPostList();
+                                    sDialog
+                                            .setTitleText("删除成功!")
+                                            .setContentText("您点击的帖子已成功删除！")
+                                            .setConfirmText("确定")
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                                 }
                             });
-                            builder.setNegativeButton("否", null);
-                            builder.create().show();
+                            sweetAlertDialog.show();
                         } else {
                             Toast.makeText(getActivity(), "只有本人或是管理员账户才能够删除帖子", Toast.LENGTH_SHORT).show();
                         }

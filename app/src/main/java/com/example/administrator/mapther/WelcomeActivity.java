@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.administrator.mapther.titanic.Titanic;
+import com.example.administrator.mapther.titanic.TitanicTextView;
+import com.example.administrator.mapther.titanic.Typefaces;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import rx.functions.Action1;
@@ -19,6 +22,14 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        TitanicTextView tv = (TitanicTextView) findViewById(R.id.titanic_tv);
+
+        // set fancy typeface
+        tv.setTypeface(Typefaces.get(this, "Satisfy-Regular.ttf"));
+
+        // start animation
+        new Titanic().start(tv);
 
         RxPermissions rxPermissions = new RxPermissions(this);
         rxPermissions

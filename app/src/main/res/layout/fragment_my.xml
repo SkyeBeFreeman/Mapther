@@ -94,45 +94,6 @@
             android:layout_marginTop="5dp"
             android:src="@mipmap/qr_code" />
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="20dp">-->
-        <!--<TextView-->
-        <!--android:textSize="50dp"-->
-        <!--android:textAlignment="center"-->
-        <!--android:text="收藏"-->
-        <!--android:layout_weight="1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
-        <!--<TextView-->
-        <!--android:textSize="50dp"-->
-        <!--android:textAlignment="center"-->
-        <!--android:text="打赏"-->
-        <!--android:layout_weight="1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
-        <!--</LinearLayout>-->
-        <!--<LinearLayout-->
-        <!--android:layout_marginTop="20dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
-        <!--<TextView-->
-        <!--android:id="@+id/update"-->
-        <!--android:textSize="50dp"-->
-        <!--android:textAlignment="center"-->
-        <!--android:text="设置"-->
-        <!--android:layout_weight="1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
-        <!--<TextView-->
-        <!--android:textSize="50dp"-->
-        <!--android:textAlignment="center"-->
-        <!--android:text="反馈"-->
-        <!--android:layout_weight="1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
-        <!--</LinearLayout>-->
     </LinearLayout>
 
 </RelativeLayout>

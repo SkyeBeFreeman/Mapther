@@ -31,7 +31,7 @@ public class Titanic {
                 // 设置水平方向动画
                 ObjectAnimator maskXAnimator = ObjectAnimator.ofFloat(textView, "maskX", 0, 200);
                 maskXAnimator.setRepeatCount(ValueAnimator.INFINITE);
-                maskXAnimator.setDuration(2000);
+                maskXAnimator.setDuration(5000);
                 maskXAnimator.setStartDelay(0);
 
                 int h = textView.getHeight();

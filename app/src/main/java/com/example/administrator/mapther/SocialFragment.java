@@ -2,7 +2,10 @@ package com.example.administrator.mapther;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ApplicationInfo;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +30,11 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +67,7 @@ public class SocialFragment extends Fragment {
     // 布局控件
     private LinearLayout show_pointer;
     private TextView image_description;
-    private ListView post_listview;
+    private SwipeMenuListView post_listview;
     private View sub_view;
     private EditText add_content;
     private EditText add_phone;
@@ -110,7 +119,7 @@ public class SocialFragment extends Fragment {
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         show_pointer = (LinearLayout) view.findViewById(R.id.show_pointer);
         image_description = (TextView) view.findViewById(R.id.image_description);
-        post_listview = (ListView) view.findViewById(R.id.post_listview);
+        post_listview = (SwipeMenuListView) view.findViewById(R.id.post_listview);
 
         if (getArguments() != null) {
             string = getArguments().getString(STRING);
@@ -227,30 +236,33 @@ public class SocialFragment extends Fragment {
         });
 
         // 帖子列表左滑删除
-        post_listview.setOnTouchListener(new SwipeDismissListViewTouchListener(
-                post_listview,
-                new SwipeDismissListViewTouchListener.DismissCallbacks() {
-                    @Override
-                    public boolean canDismiss(int position) {
-                        return true;
-                    }
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
 
-                    @Override
-                    public void onDismiss(ListView listView, int[] reverseSortedPositions) {
-                        temp = postList.get(reverseSortedPositions[0]);
+            @Override
+            public void create(SwipeMenu menu) {
+                // 添加左滑删除按钮
+                SwipeMenuItem deleteItem = new SwipeMenuItem(getActivity());
+                // 设置左滑背景颜色
+                deleteItem.setBackground(Color.RED);
+                // 设置左滑界面宽度
+                deleteItem.setWidth(dp2px(90));
+                // 设置图标
+                deleteItem.setIcon(R.mipmap.trash);
+                // 添加到左滑菜单
+                menu.addMenuItem(deleteItem);
+            }
+        };
+        // 将creator设置到左滑菜单中
+        post_listview.setMenuCreator(creator);
+
+        post_listview.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                temp = postList.get(position);
+                switch (index) {
+                    case 0:
                         if (TextUtils.equals(temp.getUser_name(), my_name)
                                 || TextUtils.equals(my_name, MainActivity.getSuper_admin())) {
-//                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//                            builder.setTitle("是否删除？");
-//                            builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    postsDB.deleteById(temp.getPost_id());
-//                                    notifyPostList();
-//                                }
-//                            });
-//                            builder.setNegativeButton("否", null);
-//                            builder.create().show();
                             SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
                             sweetAlertDialog.setTitleText("是否删除？");
                             sweetAlertDialog.setContentText("一旦删除不可恢复！");
@@ -274,8 +286,11 @@ public class SocialFragment extends Fragment {
                         } else {
                             Toast.makeText(getActivity(), "只有本人或是管理员账户才能够删除帖子", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                }));
+                        break;
+                }
+                return false;
+            }
+        });
 
         return view;
     }
@@ -411,5 +426,11 @@ public class SocialFragment extends Fragment {
         }
         cursor.close();
     }
+
+    private int dp2px(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                getResources().getDisplayMetrics());
+    }
+
 
 }

@@ -202,7 +202,6 @@ public class SocialFragment extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 temp = postList.get(position);
                 if (TextUtils.equals(temp.getUser_name(), my_name)) {
-
                     LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                     sub_view = layoutInflater.inflate(R.layout.edit_dialog, null);
                     ((TextView) sub_view.findViewById(R.id.edit_name)).setText(temp.getUser_name());
@@ -230,7 +229,6 @@ public class SocialFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), "只有本人才能够修改帖子", Toast.LENGTH_SHORT).show();
                 }
-
                 return true;
             }
         });
@@ -291,7 +289,6 @@ public class SocialFragment extends Fragment {
                 return false;
             }
         });
-
         return view;
     }
 

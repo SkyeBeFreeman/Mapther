@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     }
 
-    // 设置默认的
+    // 设置默认的初始Fragment
     private void setDefaultFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();

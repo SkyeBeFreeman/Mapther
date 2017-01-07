@@ -12,6 +12,7 @@
     <color name="blue">#2196F3</color>
     <color name="grey">#607D8B</color>
     <color name="orange">#F57C00</color>
+    <color name="delete_red">#ff0000</color>
 
     <color name="red">#ee2368</color>
     <color name="locationNameColor">#3877BF</color>

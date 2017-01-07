@@ -243,7 +243,7 @@ public class SocialFragment extends Fragment {
                 // 添加左滑删除按钮
                 SwipeMenuItem deleteItem = new SwipeMenuItem(getActivity());
                 // 设置左滑背景颜色
-                deleteItem.setBackground(Color.RED);
+                deleteItem.setBackground(R.color.delete_red);
                 // 设置左滑界面宽度
                 deleteItem.setWidth(dp2px(90));
                 // 设置图标
